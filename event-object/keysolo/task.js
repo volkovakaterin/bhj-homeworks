@@ -17,13 +17,15 @@ class Game {
   }
 
   registerEvents() {
-    /*
-      TODO:
-      Написать обработчик события, который откликается
-      на каждый введённый символ.
-      В случае правильного ввода слова вызываем this.success()
-      При неправильном вводе символа - this.fail();
-     */
+    let symbol = this.currentSymbol.textContent;
+    document.addEventListener('keydown', function(event) {
+     if(event.key.toLowerCase() === symbol) {
+       console.log("Успех");
+      Game.success();
+     } else {
+      Game.fail();
+     }
+    })
   }
 
   success() {
@@ -41,12 +43,12 @@ class Game {
   }
 
   fail() {
-    if (++this.lossElement.textContent === 5) {
-      alert('Вы проиграли!');
-      this.reset();
-    }
-    this.setNewWord();
-  }
+     if (++this.lossElement.textContent === 5) {
+       alert('Вы проиграли!');
+     this.reset();
+     }
+     this.setNewWord();
+   }
 
   setNewWord() {
     const word = this.getWord();
@@ -86,5 +88,5 @@ class Game {
   }
 }
 
-new Game(document.getElementById('game'))
+new Game(document.getElementById('game'));
 
