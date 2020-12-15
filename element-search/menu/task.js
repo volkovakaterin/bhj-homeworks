@@ -5,7 +5,7 @@ links.forEach(link => {
         menuSub = link.parentElement.querySelector('.menu_sub');
         if (menuSub !== null) {
             event.preventDefault();
-            menuSub.classList.add('menu_active');
+            menuSub.classList.toggle('menu_active');
 
         }
     })

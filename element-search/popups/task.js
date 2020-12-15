@@ -1,9 +1,12 @@
 const modalMain = document.getElementById("modal_main");
 modalMain.classList.add("modal_active");
-const modalClose = document.getElementsByClassName("modal__close");
+const modalClose = document.querySelectorAll('.modal__close');
+console.log(modalClose);
 
-addEventListener("click", function(event) {
-    if (event.target.className.includes("modal__close")) modalMain.classList.remove("modal_active");
+modalClose.forEach(element => {
+   element.addEventListener("click", function() {
+    element.closest('.modal_active').classList.remove("modal_active");
+});
 });
 
 const modalSuccess = document.getElementById("modal_success");

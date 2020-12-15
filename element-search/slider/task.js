@@ -4,33 +4,27 @@ const sliderArrowNext = document.getElementsByClassName("slider__arrow_next");
 const sliderArrowPrev = document.getElementsByClassName("slider__arrow_prev");
 let i = 0;
 
-sliderArrowNext[0].onclick = function() {
-    slideRight();    
-}
-
-sliderArrowPrev[0].onclick = function() {   
-    slideLeft();
-}
-
-function slideRight() {    
+sliderArrowNext[0].onclick = function() {   
     sliderItemArr[i].classList.remove("slider__item_active");
     ++i;
-    checkR();
+    if (i === sliderItemArr.length) i = 0;
     sliderItemArr[i].classList.add("slider__item_active");
 }
 
-function slideLeft() {   
+
+sliderArrowPrev[0].onclick = function() {     
     sliderItemArr[i].classList.remove("slider__item_active");
     --i;
-    checkL();
+    if (i === -1) i = sliderItemArr.length - 1;
     sliderItemArr[i].classList.add("slider__item_active");
 }
 
-function checkR () {
-    if (i === 5) i = 0;
-}
 
-function checkL () {
-    if (i === -1) i = 4;
-}
+
+
+
+
+
+
+
 
