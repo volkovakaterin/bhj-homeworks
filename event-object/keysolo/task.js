@@ -17,13 +17,14 @@ class Game {
   }
 
   registerEvents() {
-    let symbol = this.currentSymbol.textContent;
-    document.addEventListener('keydown', function(event) {
+    let that = this;
+    let symbol = that.currentSymbol.textContent;
+    document.addEventListener('keydown', (event) => {
      if(event.key.toLowerCase() === symbol) {
        console.log("Успех");
-      Game.success();
+      that.success();
      } else {
-      Game.fail();
+      that.fail();
      }
     })
   }
