@@ -18,8 +18,8 @@ class Game {
 
   registerEvents() {
     let that = this;
-    let symbol = that.currentSymbol.textContent;
     document.addEventListener('keydown', (event) => {
+      let symbol = that.currentSymbol.textContent;
      if(event.key.toLowerCase() === symbol) {
        console.log("Успех");
       that.success();
