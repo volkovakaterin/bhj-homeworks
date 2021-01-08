@@ -68,12 +68,14 @@ class Autocomplete {
   }
 
   getMatches( text ) {
-    //this.input.addEventListener('change', event => {
-    console.log(this.input);
-    const {value, options, selectedIndex} = this.input.currentTarget;
+    console.log(this.input.options);
+    this.input.options.forEach(element => {
+    element.addEventListener('change', (event) => {
+    console.log(event);
+    const {value, options, selectedIndex} = event.currentTarget;
     console.log(value);
     console.log(options[selectedIndex].text);
-    //})
+    })});
     return 
     [
       {
