@@ -68,21 +68,17 @@ class Autocomplete {
   }
 
   getMatches( text ) {
-    console.log(this.input.options);
-    this.input.options.forEach(element => {
-    element.addEventListener('change', (event) => {
-    console.log(event);
-    const {value, options, selectedIndex} = event.currentTarget;
-    console.log(value);
-    console.log(options[selectedIndex].text);
-    })});
-    return 
-    [
-      {
-        text: 'Чубакка',
-        value: '1'
-      }
-    ];
+    let arr = [];
+    const autocompleteSearch = document.querySelector('.autocomplete__search ');
+    Array.from(this.input.options).forEach(element => {
+    if (element.text.includes(`${autocompleteSearch.value}`)){
+      arr.push({
+        text: element.text,
+        value: element.value
+   })
+    }
+    });
+    return arr;
   }
 }
 
