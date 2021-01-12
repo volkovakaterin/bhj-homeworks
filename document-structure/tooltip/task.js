@@ -1,10 +1,12 @@
 const hasTooltip = document.querySelectorAll('.has-tooltip');
-console.log(hasTooltip);
 hasTooltip.forEach(element => {
+    const {title} = element;
+    element.insertAdjacentHTML('afterEnd',`<div class="tooltip">${title}</div>`);
     element.addEventListener('click', (event) => {
     event.preventDefault();
-    console.log(event.currentTarget);
-    const {title} = event.currentTarget;
-    console.log(title);
+    if(document.getElementsByClassName('tooltip_active')[0]) {
+        document.getElementsByClassName('tooltip_active')[0].classList.remove('tooltip_active')
+    }
+    event.currentTarget.nextSibling.classList.add("tooltip_active");
     })
 });
