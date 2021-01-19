@@ -2,7 +2,9 @@ const taskInput = document.getElementById('task__input');
 const tasksList = document.getElementById('tasks__list');
 const taskRemove = document.getElementsByClassName("task__remove");
 const tasksAdd = document.getElementById('tasks__add');
+const taskForm = document.getElementById('tasks__form');
 function Add() {
+  taskForm.onsubmit = (event) => event.preventDefault();
     if(taskInput.value.trim() !== ""){
       tasksList.insertAdjacentHTML("afterbegin", `<div class="task">
      <div class="task__title">
@@ -10,14 +12,12 @@ function Add() {
      </div>
      <a href="#" class="task__remove">&times;</a>
      </div>`);  
-    }
-     Array.from(taskRemove).forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.currentTarget.parentNode.remove();
-            })
-})
+    };
+     taskRemove[0].addEventListener('click', (event) => {
+     event.currentTarget.parentNode.remove();
+     });
+     taskInput.value = "";
 }
-console.log(tasksAdd);
 tasksAdd.onclick = () =>{Add()};
 
 taskInput.addEventListener("keydown", (event) => {
